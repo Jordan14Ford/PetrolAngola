@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="dashboard.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <header>
+            <h1>Sales Dashboard</h1>
+        </header>
+
+        <div class="controls gradient-border">
+            <div class="filter-group">
+                <label for="dateRange">Date Range</label>
+                <select id="dateRange">
+                    <option value="all">All Time</option>
+                    <option value="6months">Last 6 Months</option>
+                    <option value="3months">Last 3 Months</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="metric">Metric</label>
+                <select id="metric">
+                    <option value="both">Sales & Revenue</option>
+                    <option value="sales">Sales Only</option>
+                    <option value="revenue">Revenue Only</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Summary Stats -->
+        <div class="summary-stats">
+            <div class="stat-card gradient-border">
+                <h4>Total Sales</h4>
+                <p class="stat-value" id="totalSales">17,060</p>
+            </div>
+            <div class="stat-card gradient-border">
+                <h4>Total Revenue</h4>
+                <p class="stat-value" id="totalRevenue">$22,106</p>
+            </div>
+            <div class="stat-card gradient-border">
+                <h4>Average Monthly Sales</h4>
+                <p class="stat-value" id="avgSales">2,843</p>
+            </div>
+        </div>
+
+        <div class="data-grid">
+            <!-- Monthly Data -->
+            <div class="data-card gradient-border">
+                <h3>Monthly Performance</h3>
+                <table id="monthlyData">
+                    <thead>
+                        <tr>
+                            <th>Month</th>
+                            <th>Sales</th>
+                            <th>Revenue</th>
+                            <th>Growth</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Jan</td>
+                            <td>4,000</td>
+                            <td>$24,000</td>
+                            <td class="growth positive">+15%</td>
+                        </tr>
+                        <tr>
+                            <td>Feb</td>
+                            <td>3,000</td>
+                            <td>$19,000</td>
+                            <td class="growth positive">+10%</td>
+                        </tr>
+                        <tr>
+                            <td>Mar</td>
+                            <td>2,000</td>
+                            <td>$14,800</td>
+                            <td class="growth negative">-5%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Product Distribution -->
+            <div class="data-card gradient-border">
+                <h3>Product Distribution</h3>
+                <div class="chart-container">
+                    <canvas id="productChart"></canvas>
+                </div>
+                <table id="productData">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Value</th>
+                            <th>Share</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Product A</td>
+                            <td>$40,000</td>
+                            <td>40%</td>
+                        </tr>
+                        <tr>
+                            <td>Product B</td>
+                            <td>$30,000</td>
+                            <td>30%</td>
+                        </tr>
+                        <tr>
+                            <td>Product C</td>
+                            <td>$20,000</td>
+                            <td>20%</td>
+                        </tr>
+                        <tr>
+                            <td>Product D</td>
+                            <td>$10,000</td>
+                            <td>10%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
