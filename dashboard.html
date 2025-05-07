@@ -3,126 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sales Dashboard</title>
+    <title>Angolan Oil Geological Dashboard</title>
     <link rel="stylesheet" href="dashboard.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
     <script src="dashboard.js"></script>
 </head>
-<body>
+<body class="enterprise-theme">
     <div class="dashboard-container">
-        <header>
-            <h1>Sales Dashboard</h1>
+        <header class="dashboard-header">
+            <div class="header-content">
+                <h1>Angolan Oil Geological Dashboard</h1>
+                <div class="header-actions">
+                    <button class="action-button">
+                        <span class="icon">📊</span>
+                        Export Report
+                    </button>
+                    <button class="action-button">
+                        <span class="icon">⚙️</span>
+                        Settings
+                    </button>
+                </div>
+            </div>
         </header>
 
-        <div class="controls gradient-border">
-            <div class="filter-group">
-                <label for="dateRange">Date Range</label>
-                <select id="dateRange">
-                    <option value="all">All Time</option>
-                    <option value="6months">Last 6 Months</option>
-                    <option value="3months">Last 3 Months</option>
-                </select>
-            </div>
-            <div class="filter-group">
-                <label for="metric">Metric</label>
-                <select id="metric">
-                    <option value="both">Sales & Revenue</option>
-                    <option value="sales">Sales Only</option>
-                    <option value="revenue">Revenue Only</option>
-                </select>
-            </div>
-        </div>
-
-        <!-- Summary Stats -->
-        <div class="summary-stats">
-            <div class="stat-card gradient-border">
-                <h4>Total Sales</h4>
-                <p class="stat-value" id="totalSales">17,060</p>
-            </div>
-            <div class="stat-card gradient-border">
-                <h4>Total Revenue</h4>
-                <p class="stat-value" id="totalRevenue">$22,106</p>
-            </div>
-            <div class="stat-card gradient-border">
-                <h4>Average Monthly Sales</h4>
-                <p class="stat-value" id="avgSales">2,843</p>
-            </div>
-        </div>
-
-        <div class="data-grid">
-            <!-- Monthly Data -->
-            <div class="data-card gradient-border">
-                <h3>Monthly Performance</h3>
-                <table id="monthlyData">
-                    <thead>
-                        <tr>
-                            <th>Month</th>
-                            <th>Sales</th>
-                            <th>Revenue</th>
-                            <th>Growth</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Jan</td>
-                            <td>4,000</td>
-                            <td>$24,000</td>
-                            <td class="growth positive">+15%</td>
-                        </tr>
-                        <tr>
-                            <td>Feb</td>
-                            <td>3,000</td>
-                            <td>$19,000</td>
-                            <td class="growth positive">+10%</td>
-                        </tr>
-                        <tr>
-                            <td>Mar</td>
-                            <td>2,000</td>
-                            <td>$14,800</td>
-                            <td class="growth negative">-5%</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Product Distribution -->
-            <div class="data-card gradient-border">
-                <h3>Product Distribution</h3>
-                <div class="chart-container">
-                    <canvas id="productChart"></canvas>
+        <div class="main-content">
+            <!-- Left Column: Data Panels -->
+            <div class="data-column">
+                <!-- Drilling Statistics Panel -->
+                <div class="data-panel enterprise-card">
+                    <div class="panel-header">
+                        <h3>Drilling Statistics</h3>
+                        <span class="refresh-icon">🔄</span>
+                    </div>
+                    <div class="stat-grid">
+                        <div class="stat-item">
+                            <h4>Active Wells</h4>
+                            <p class="stat-value" id="activeWells">0</p>
+                            <span class="trend positive">+2.5%</span>
+                        </div>
+                        <div class="stat-item">
+                            <h4>Total Production</h4>
+                            <p class="stat-value" id="totalProduction">0 bbl</p>
+                            <span class="trend positive">+5.1%</span>
+                        </div>
+                        <div class="stat-item">
+                            <h4>Average Depth</h4>
+                            <p class="stat-value" id="avgDepth">0 m</p>
+                            <span class="trend neutral">0%</span>
+                        </div>
+                        <div class="stat-item">
+                            <h4>Success Rate</h4>
+                            <p class="stat-value" id="successRate">0%</p>
+                            <span class="trend positive">+1.2%</span>
+                        </div>
+                    </div>
                 </div>
-                <table id="productData">
-                    <thead>
-                        <tr>
-                            <th>Product</th>
-                            <th>Value</th>
-                            <th>Share</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Product A</td>
-                            <td>$40,000</td>
-                            <td>40%</td>
-                        </tr>
-                        <tr>
-                            <td>Product B</td>
-                            <td>$30,000</td>
-                            <td>30%</td>
-                        </tr>
-                        <tr>
-                            <td>Product C</td>
-                            <td>$20,000</td>
-                            <td>20%</td>
-                        </tr>
-                        <tr>
-                            <td>Product D</td>
-                            <td>$10,000</td>
-                            <td>10%</td>
-                        </tr>
-                    </tbody>
-                </table>
+
+                <!-- Production Trends Panel -->
+                <div class="data-panel enterprise-card">
+                    <div class="panel-header">
+                        <h3>Production Trends</h3>
+                        <div class="panel-actions">
+                            <select class="time-range-select">
+                                <option value="7d">Last 7 Days</option>
+                                <option value="30d">Last 30 Days</option>
+                                <option value="90d">Last 90 Days</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="productionChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Well Details Panel -->
+                <div class="data-panel enterprise-card">
+                    <div class="panel-header">
+                        <h3>Well Details</h3>
+                        <button class="add-well-button">+ Add Well</button>
+                    </div>
+                    <div class="well-list" id="wellList">
+                        <!-- Well items will be dynamically populated -->
+                    </div>
+                </div>
+
+                <!-- Geological Data Panel -->
+                <div class="data-panel enterprise-card">
+                    <div class="panel-header">
+                        <h3>Geological Data</h3>
+                        <span class="refresh-icon">🔄</span>
+                    </div>
+                    <div class="geo-data">
+                        <div class="geo-item">
+                            <h4>Formation Type</h4>
+                            <p id="formationType">-</p>
+                        </div>
+                        <div class="geo-item">
+                            <h4>Reservoir Pressure</h4>
+                            <p id="reservoirPressure">-</p>
+                        </div>
+                        <div class="geo-item">
+                            <h4>Porosity</h4>
+                            <p id="porosity">-</p>
+                        </div>
+                        <div class="geo-item">
+                            <h4>Permeability</h4>
+                            <p id="permeability">-</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Map Component -->
+            <div class="map-column">
+                <div class="map-container enterprise-card">
+                    <div class="panel-header">
+                        <h3>Geological Map</h3>
+                        <div class="map-controls">
+                            <button class="map-control-button" id="toggleHeatmap">
+                                <span class="icon">🔥</span>
+                                Heatmap
+                            </button>
+                            <button class="map-control-button" id="toggleWells">
+                                <span class="icon">📍</span>
+                                Wells
+                            </button>
+                            <button class="map-control-button" id="toggleFormations">
+                                <span class="icon">🗺️</span>
+                                Formations
+                            </button>
+                        </div>
+                    </div>
+                    <div id="geologicalMap"></div>
+                </div>
             </div>
         </div>
     </div>
