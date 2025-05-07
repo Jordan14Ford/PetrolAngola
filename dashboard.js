@@ -2,6 +2,33 @@
 * ANGOLAN OIL DASHBOARD JAVASCRIPT
 * This file contains all the interactive functionality for the oil dashboard.
 * It handles the map, charts, and data updates.
+*
+* FUTURE ENHANCEMENTS:
+* 1. Map Features:
+*    - Add layer control for different map types (satellite, terrain, etc.)
+*    - Implement well clustering for better performance with many wells
+*    - Add drawing tools for marking areas of interest
+*    - Add measurement tools for distance and area calculations
+*    - Implement custom map styles for better visualization
+*    - Add 3D terrain visualization for geological features
+*    - Implement well path visualization in 3D
+*    - Add time-based animation for historical data
+*
+* 2. Data Visualization:
+*    - Add more chart types (scatter plots, bubble charts)
+*    - Implement real-time data updates
+*    - Add drill-down capabilities for detailed analysis
+*    - Create interactive data tables with sorting and filtering
+*    - Add export functionality for charts and data
+*    - Implement custom color schemes for different data types
+*    - Add trend analysis and forecasting
+*    - Create comparative analysis views
+*
+* 3. Performance Optimizations:
+*    - Implement data caching for better performance
+*    - Add lazy loading for map tiles
+*    - Optimize marker rendering for large datasets
+*    - Implement WebGL for better 3D performance
 */
 
 // Wait for the page to fully load before running any code
@@ -284,4 +311,92 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize the dashboard with current statistics
     updateStats();
+
+    // FUTURE: Add more map layer options
+    // const mapLayers = {
+    //     satellite: L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'),
+    //     terrain: L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png'),
+    //     custom: L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png')
+    // };
+
+    // FUTURE: Add well clustering for better performance
+    // const markers = L.markerClusterGroup();
+    // wells.forEach(well => {
+    //     const marker = L.marker([well.lat, well.lng]);
+    //     markers.addLayer(marker);
+    // });
+    // map.addLayer(markers);
+
+    // FUTURE: Add drawing tools
+    // const drawControl = new L.Control.Draw({
+    //     draw: {
+    //         polygon: true,
+    //         circle: true,
+    //         rectangle: true,
+    //         marker: false
+    //     }
+    // });
+    // map.addControl(drawControl);
+
+    // FUTURE: Add 3D visualization
+    // const scene = new THREE.Scene();
+    // const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    // const renderer = new THREE.WebGLRenderer();
+    // renderer.setSize(window.innerWidth, window.innerHeight);
+    // document.getElementById('geologicalMap').appendChild(renderer.domElement);
+
+    // FUTURE: Add real-time data updates
+    // function updateRealTimeData() {
+    //     fetch('/api/well-data')
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             updateWellMarkers(data);
+    //             updateCharts(data);
+    //         });
+    // }
+    // setInterval(updateRealTimeData, 30000); // Update every 30 seconds
+
+    // FUTURE: Add advanced chart features
+    // const advancedChartOptions = {
+    //     plugins: {
+    //         zoom: {
+    //             zoom: {
+    //                 wheel: { enabled: true },
+    //                 pinch: { enabled: true },
+    //                 mode: 'xy'
+    //             },
+    //             pan: { enabled: true }
+    //         },
+    //         annotation: {
+    //             annotations: {
+    //                 line1: {
+    //                     type: 'line',
+    //                     yMin: 5000,
+    //                     yMax: 5000,
+    //                     borderColor: 'rgb(255, 99, 132)',
+    //                     borderWidth: 2,
+    //                     label: {
+    //                         content: 'Target Production',
+    //                         enabled: true
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     }
+    // };
+
+    // FUTURE: Add data export functionality
+    // function exportData() {
+    //     const data = {
+    //         wells: wells,
+    //         production: productionChart.data,
+    //         distribution: productChart.data
+    //     };
+    //     const blob = new Blob([JSON.stringify(data)], { type: 'application/json' });
+    //     const url = window.URL.createObjectURL(blob);
+    //     const a = document.createElement('a');
+    //     a.href = url;
+    //     a.download = 'oil-dashboard-data.json';
+    //     a.click();
+    // }
 }); 
