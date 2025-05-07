@@ -1,75 +1,99 @@
+/*
+* ANGOLAN OIL DASHBOARD STYLES
+* This file contains all the styling for the oil dashboard interface.
+* It's organized into sections for easy understanding and maintenance.
+*/
+
+/* 
+* COLOR VARIABLES
+* These are the main colors used throughout the dashboard.
+* We use variables (starting with --) so we can easily change colors in one place.
+*/
 :root {
-    /* Brand Colors */
-    --primary-color: #0066cc;
-    --secondary-color: #004999;
-    --accent-color: #00a3ff;
+    /* Main brand colors for the dashboard */
+    --primary-color: #0066cc;    /* Main blue color for buttons and highlights */
+    --secondary-color: #004999;  /* Darker blue for hover states */
+    --accent-color: #00a3ff;     /* Bright blue for special elements */
     
-    /* Status Colors */
-    --success-color: #28a745;
-    --warning-color: #ffc107;
-    --danger-color: #dc3545;
-    --neutral-color: #6c757d;
+    /* Colors to show different states (success, warning, error) */
+    --success-color: #28a745;    /* Green for positive indicators */
+    --warning-color: #ffc107;    /* Yellow for warnings */
+    --danger-color: #dc3545;     /* Red for errors or negative indicators */
+    --neutral-color: #6c757d;    /* Gray for neutral elements */
     
-    /* Theme Colors */
-    --background-color: #f8f9fa;
-    --text-color: #2c3e50;
-    --border-color: #e9ecef;
-    --card-background: #ffffff;
+    /* Main theme colors for the interface */
+    --background-color: #f8f9fa; /* Light gray background */
+    --text-color: #2c3e50;       /* Dark blue-gray for text */
+    --border-color: #e9ecef;     /* Light gray for borders */
+    --card-background: #ffffff;  /* White for card backgrounds */
     
-    /* Dark Theme Colors */
-    --background-dark: #1a1a1a;
-    --background-darker: #141414;
-    --text-primary: #ffffff;
-    --text-secondary: #a0a0a0;
+    /* Colors for dark mode (if needed) */
+    --background-dark: #1a1a1a;      /* Dark background */
+    --background-darker: #141414;    /* Even darker background */
+    --text-primary: #ffffff;         /* White text */
+    --text-secondary: #a0a0a0;       /* Light gray text */
     
-    /* Gradient Colors */
-    --gradient-start: #8884d8;
-    --gradient-end: #82ca9d;
-    --dot-color: #e2e8f0;
+    /* Colors for gradients and special effects */
+    --gradient-start: #8884d8;   /* Start color for gradients */
+    --gradient-end: #82ca9d;     /* End color for gradients */
+    --dot-color: #e2e8f0;        /* Color for dots and small elements */
 }
 
-/* Base Styles */
+/* 
+* BASIC RESET AND DEFAULT STYLES
+* These styles ensure consistent appearance across different browsers
+*/
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin: 0;          /* Remove default margins */
+    padding: 0;         /* Remove default padding */
+    box-sizing: border-box; /* Make padding and borders part of element size */
 }
 
+/* 
+* BODY STYLES
+* These styles apply to the entire page
+*/
 body {
-    font-family: 'Inter', sans-serif;
-    background-color: var(--background-color);
-    color: var(--text-color);
-    line-height: 1.6;
-    min-height: 100vh;
+    font-family: 'Inter', sans-serif;  /* Modern, clean font */
+    background-color: var(--background-color);  /* Light gray background */
+    color: var(--text-color);          /* Dark text color */
+    line-height: 1.6;                  /* Space between lines of text */
+    min-height: 100vh;                 /* Minimum height of full viewport */
 }
 
-/* Layout Container */
+/* 
+* MAIN DASHBOARD CONTAINER
+* This is the main wrapper for the entire dashboard
+*/
 .dashboard-container {
-    max-width: 1920px;
-    margin: 0 auto;
-    padding: 20px;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
+    max-width: 1920px;          /* Maximum width of the dashboard */
+    margin: 0 auto;             /* Center the dashboard */
+    padding: 20px;              /* Space around the edges */
+    height: 100vh;              /* Full viewport height */
+    display: flex;              /* Use flexbox for layout */
+    flex-direction: column;     /* Stack children vertically */
+    overflow: hidden;           /* Hide overflow content */
 }
 
-/* Header Styles */
+/* 
+* HEADER SECTION
+* Styles for the top section of the dashboard
+*/
 .dashboard-header {
-    margin-bottom: 24px;
-    padding: 16px 0;
-    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 24px;        /* Space below header */
+    padding: 16px 0;            /* Space above and below header content */
+    border-bottom: 1px solid var(--border-color);  /* Line below header */
 }
 
 .header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: flex;              /* Use flexbox for layout */
+    justify-content: space-between;  /* Space items evenly */
+    align-items: center;        /* Center items vertically */
 }
 
 .header-actions {
-    display: flex;
-    gap: 12px;
+    display: flex;              /* Use flexbox for layout */
+    gap: 12px;                  /* Space between action buttons */
 }
 
 .action-button {
@@ -89,219 +113,119 @@ body {
     background: var(--secondary-color);
 }
 
-/* Main Content Layout */
+/* 
+* MAIN CONTENT LAYOUT
+* This section controls the two-column layout of the dashboard
+*/
 .main-content {
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 24px;
-    flex: 1;
-    min-height: 0;
-    height: calc(100vh - 100px);
+    display: grid;              /* Use grid for layout */
+    grid-template-columns: 1fr 1.5fr;  /* Left column 1/3, right column 2/3 */
+    gap: 24px;                  /* Space between columns */
+    flex: 1;                    /* Take up remaining space */
+    min-height: 0;              /* Allow content to scroll */
+    height: calc(100vh - 100px);  /* Full height minus header */
 }
 
-/* Left Column Layout */
+/* 
+* LEFT COLUMN STYLES
+* Contains the data panels and statistics
+*/
 .data-column {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    overflow-y: auto;
-    padding-right: 12px;
+    display: flex;              /* Use flexbox for layout */
+    flex-direction: column;     /* Stack children vertically */
+    gap: 24px;                  /* Space between panels */
+    overflow-y: auto;           /* Allow vertical scrolling */
+    padding-right: 12px;        /* Space on the right */
 }
 
-/* Card Components */
+/* 
+* CARD COMPONENTS
+* Styles for the panel cards that contain data
+*/
 .enterprise-card {
-    background: var(--card-background);
-    border-radius: 12px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    border: 1px solid var(--border-color);
+    background: var(--card-background);  /* White background */
+    border-radius: 12px;        /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);  /* Subtle shadow */
+    border: 1px solid var(--border-color);  /* Light border */
 }
 
-/* Panel Components */
+/* 
+* PANEL HEADERS
+* Styles for the headers of each panel
+*/
 .panel-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 16px;
-    border-bottom: 1px solid var(--border-color);
+    display: flex;              /* Use flexbox for layout */
+    justify-content: space-between;  /* Space items evenly */
+    align-items: center;        /* Center items vertically */
+    padding: 16px;              /* Space around content */
+    border-bottom: 1px solid var(--border-color);  /* Line below header */
 }
 
 .panel-header h3 {
-    color: var(--text-color);
-    font-size: 1.1rem;
-    font-weight: 600;
+    color: var(--text-color);   /* Dark text color */
+    font-size: 1.1rem;          /* Slightly larger text */
+    font-weight: 600;           /* Semi-bold text */
 }
 
-/* Statistics Components */
+/* 
+* STATISTICS GRID
+* Styles for the grid of statistics
+*/
 .stat-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-    padding: 16px;
+    display: grid;              /* Use grid for layout */
+    grid-template-columns: repeat(2, 1fr);  /* Two equal columns */
+    gap: 16px;                  /* Space between items */
+    padding: 16px;              /* Space around grid */
 }
 
 .stat-item {
-    background: var(--background-color);
-    padding: 16px;
-    border-radius: 8px;
-    position: relative;
+    background: var(--background-color);  /* Light gray background */
+    padding: 16px;              /* Space around content */
+    border-radius: 8px;         /* Rounded corners */
+    position: relative;         /* For positioning child elements */
 }
 
 .stat-item h4 {
-    font-size: 0.9rem;
-    color: var(--neutral-color);
-    margin-bottom: 8px;
+    font-size: 0.9rem;          /* Smaller text */
+    color: var(--neutral-color);  /* Gray text */
+    margin-bottom: 8px;         /* Space below heading */
 }
 
 .stat-value {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--text-color);
-    margin-bottom: 4px;
+    font-size: 1.5rem;          /* Larger text */
+    font-weight: 600;           /* Semi-bold text */
+    color: var(--text-color);   /* Dark text color */
+    margin-bottom: 4px;         /* Space below value */
 }
 
-/* Map Controls */
-.map-controls {
-    display: flex;
-    gap: 8px;
-    padding: 12px;
-    background: var(--card-background);
-    border-bottom: 1px solid var(--border-color);
-    z-index: 2;
-}
-
-.map-control-button {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 16px;
-    background: var(--background-color);
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
-    color: var(--text-color);
-    cursor: pointer;
-    transition: all 0.2s;
-    font-weight: 500;
-}
-
-.map-control-button:hover {
-    background: var(--primary-color);
-    color: white;
-    border-color: var(--primary-color);
-}
-
-.map-control-button.active {
-    background: var(--primary-color);
-    color: white;
-    border-color: var(--primary-color);
-}
-
-/* Chart Components */
-.chart-container {
-    position: relative;
-    margin: 20px 0;
-    height: 300px;
-    width: 100%;
-    background: white;
-}
-
-/* Utility Classes */
-.trend {
-    font-size: 0.8rem;
-    font-weight: 500;
-}
-
-.trend.positive {
-    color: var(--success-color);
-}
-
-.trend.negative {
-    color: var(--danger-color);
-}
-
-.trend.neutral {
-    color: var(--neutral-color);
-}
-
-/* Scrollbar Styling */
-::-webkit-scrollbar {
-    width: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: var(--background-color);
-    border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--border-color);
-    border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: var(--neutral-color);
-}
-
-/* Responsive Design */
-@media (max-width: 1200px) {
-    .main-content {
-        grid-template-columns: 1fr;
-    }
-    
-    .map-column {
-        height: 600px;
-    }
-}
-
-@media (max-width: 768px) {
-    .dashboard-container {
-        padding: 12px;
-    }
-    
-    .header-content {
-        flex-direction: column;
-        gap: 16px;
-    }
-    
-    .stat-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 960px) {
-    .sidebar {
-        display: none;
-    }
-    
-    .main-content {
-        margin-left: 0 !important;
-    }
-}
-
-/* Map Column Layout */
+/* 
+* MAP SECTION
+* Styles for the map container and controls
+*/
 .map-column {
-    height: 100%;
-    min-height: 0;
-    display: flex;
-    flex-direction: column;
+    height: 100%;               /* Full height */
+    min-height: 0;              /* Allow content to scroll */
+    display: flex;              /* Use flexbox for layout */
+    flex-direction: column;     /* Stack children vertically */
 }
 
 .map-container {
-    height: 100%;
-    min-height: 800px;
-    display: flex;
-    flex-direction: column;
-    background: var(--card-background);
-    border-radius: 12px;
-    overflow: hidden;
-    position: relative;
+    height: 100%;               /* Full height */
+    min-height: 800px;          /* Minimum height */
+    display: flex;              /* Use flexbox for layout */
+    flex-direction: column;     /* Stack children vertically */
+    background: var(--card-background);  /* White background */
+    border-radius: 12px;        /* Rounded corners */
+    overflow: hidden;           /* Hide overflow content */
+    position: relative;         /* For positioning child elements */
 }
 
 #geologicalMap {
-    flex: 1;
-    min-height: 700px;
-    width: 100%;
-    border-radius: 0 0 12px 12px;
-    z-index: 1;
+    flex: 1;                    /* Take up remaining space */
+    min-height: 700px;          /* Minimum height */
+    width: 100%;                /* Full width */
+    border-radius: 0 0 12px 12px;  /* Rounded bottom corners */
+    z-index: 1;                 /* Layer order */
 }
 
 .time-range-select {
@@ -395,4 +319,144 @@ body {
     height: 8px;
     border-radius: 50%;
     margin-right: 8px;
+}
+
+/* 
+* MAP CONTROLS
+* Styles for the buttons and controls above the map
+*/
+.map-controls {
+    display: flex;              /* Use flexbox for layout */
+    gap: 8px;                   /* Space between controls */
+    padding: 12px;              /* Space around controls */
+    background: var(--card-background);  /* White background */
+    border-bottom: 1px solid var(--border-color);  /* Line below controls */
+    z-index: 2;                 /* Layer order */
+}
+
+.map-control-button {
+    display: flex;              /* Use flexbox for layout */
+    align-items: center;        /* Center items vertically */
+    gap: 6px;                   /* Space between icon and text */
+    padding: 8px 16px;          /* Space around content */
+    background: var(--background-color);  /* Light gray background */
+    border: 1px solid var(--border-color);  /* Light border */
+    border-radius: 6px;         /* Rounded corners */
+    color: var(--text-color);   /* Dark text color */
+    cursor: pointer;            /* Hand cursor on hover */
+    transition: all 0.2s;       /* Smooth transitions */
+    font-weight: 500;           /* Medium text weight */
+}
+
+.map-control-button:hover {
+    background: var(--primary-color);  /* Blue background on hover */
+    color: white;               /* White text on hover */
+    border-color: var(--primary-color);  /* Blue border on hover */
+}
+
+.map-control-button.active {
+    background: var(--primary-color);  /* Blue background when active */
+    color: white;               /* White text when active */
+    border-color: var(--primary-color);  /* Blue border when active */
+}
+
+/* 
+* CHART CONTAINER
+* Styles for the charts showing data
+*/
+.chart-container {
+    position: relative;         /* For positioning child elements */
+    margin: 20px 0;             /* Space above and below */
+    height: 300px;              /* Fixed height */
+    width: 100%;                /* Full width */
+    background: white;          /* White background */
+}
+
+/* 
+* TREND INDICATORS
+* Styles for showing positive/negative trends
+*/
+.trend {
+    font-size: 0.8rem;          /* Smaller text */
+    font-weight: 500;           /* Medium text weight */
+}
+
+.trend.positive {
+    color: var(--success-color);  /* Green for positive trends */
+}
+
+.trend.negative {
+    color: var(--danger-color);   /* Red for negative trends */
+}
+
+.trend.neutral {
+    color: var(--neutral-color);  /* Gray for neutral trends */
+}
+
+/* 
+* CUSTOM SCROLLBAR
+* Styles for the scrollbar to match the dashboard theme
+*/
+::-webkit-scrollbar {
+    width: 8px;                 /* Width of scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background: var(--background-color);  /* Light gray track */
+    border-radius: 4px;         /* Rounded corners */
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);  /* Light gray thumb */
+    border-radius: 4px;         /* Rounded corners */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--neutral-color);  /* Darker gray on hover */
+}
+
+/* 
+* RESPONSIVE DESIGN
+* These styles make the dashboard work on different screen sizes
+*/
+@media (max-width: 1200px) {
+    /* Stack columns on smaller screens */
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Adjust map height */
+    .map-column {
+        height: 600px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Adjust spacing on mobile */
+    .dashboard-container {
+        padding: 12px;
+    }
+    
+    /* Stack header items */
+    .header-content {
+        flex-direction: column;
+        gap: 16px;
+    }
+    
+    /* Single column for stats */
+    .stat-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 960px) {
+    /* Hide sidebar on smaller screens */
+    .sidebar {
+        display: none;
+    }
+    
+    /* Remove margin when sidebar is hidden */
+    .main-content {
+        margin-left: 0 !important;
+    }
 } 
